@@ -1,0 +1,8 @@
+Credit cards (from left to right):
+    - American Express;
+    - Diners Club;
+    - Discover;
+    - JCB;
+    - MasterCard;
+    - Mir;
+    - Visa.
