@@ -10,6 +10,7 @@ describe('Credit Card Validator form', () => {
   const baseUrl = 'http://localhost:8888';
 
   beforeAll(async () => {
+    jest.setTimeout(30000);
     server = fork(`${__dirname}/e2e.server.js`);
     await new Promise((resolve, reject) => {
       server.on('error', reject);
@@ -35,9 +36,9 @@ describe('Credit Card Validator form', () => {
 
   test.each([
     '4',
-    // 'afaasfk',
-    // '135463746354',
-    // '4400 4164 2568 1234',
+    'afaasfk',
+    '135463746354',
+    '4400 4164 2568 1234',
   ])('test form-control invalid', async (n) => {
     await page.goto(baseUrl);
     const formGroup = await page.$('.form-group');
@@ -54,12 +55,12 @@ describe('Credit Card Validator form', () => {
 
   test.each([
     ['371449635398431', 'am-exp'],
-    // ['30569309025904', 'din-cl'],
-    // ['6011111111111117', 'disc'],
-    // ['3530111333300000', 'jcb'],
-    // ['5555555555554444', 'master'],
-    // ['4111111111111111', 'visa'],
-    // ['2200 0000 0000 0004', 'mir'],
+    ['30569309025904', 'din-cl'],
+    ['6011111111111117', 'disc'],
+    ['3530111333300000', 'jcb'],
+    ['5555555555554444', 'master'],
+    ['4111111111111111', 'visa'],
+    ['2200 0000 0000 0004', 'mir'],
   ])('test form-control frame', async (n, res) => {
     await page.goto(baseUrl);
     const formGroup = await page.$('.form-group');
