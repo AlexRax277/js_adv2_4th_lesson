@@ -28,9 +28,10 @@ describe('Credit Card Validator form', () => {
     page = await browser.newPage();
   });
 
-  afterAll(async () => {
-    await browser.close();
+  afterAll((done) => {
+    browser.close();
     server.kill();
+    done();
   });
 
   test.each([
@@ -38,7 +39,7 @@ describe('Credit Card Validator form', () => {
     'afaasfk',
     '135463746354',
     '4400 4164 2568 1234',
-  ])('test form-control invalid', async (n, done) => {
+  ])('test form-control invalid', async (n) => {
     await page.goto(baseUrl);
     const formGroup = await page.$('.form-group');
     const input = await formGroup.$('.form-control');
@@ -50,7 +51,6 @@ describe('Credit Card Validator form', () => {
     const msg = await formGroup.$eval('.msg', (el) => el.classList.value);
 
     await expect(msg).toEqual('msg invalid');
-    done();
   });
 
   test.each([
@@ -61,7 +61,7 @@ describe('Credit Card Validator form', () => {
     ['5555555555554444', 'master'],
     ['4111111111111111', 'visa'],
     ['2200 0000 0000 0004', 'mir'],
-  ])('test form-control frame', async (n, res, done) => {
+  ])('test form-control frame', async (n, res) => {
     await page.goto(baseUrl);
     const formGroup = await page.$('.form-group');
     const input = await formGroup.$('.form-control');
@@ -73,6 +73,5 @@ describe('Credit Card Validator form', () => {
     const cardInFrame = await page.$eval('.frame', (el) => el.classList.value);
 
     await expect(cardInFrame).toEqual(`card ${res} frame`);
-    done();
   });
 });
