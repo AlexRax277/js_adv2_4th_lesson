@@ -29,7 +29,7 @@ describe('Credit Card Validator form', () => {
   });
 
   afterAll((done) => {
-    browser.close();
+    // browser.close();
     server.kill();
     done();
   });
