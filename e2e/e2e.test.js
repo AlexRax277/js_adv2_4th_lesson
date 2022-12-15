@@ -37,7 +37,7 @@ describe('Credit Card Validator form', () => {
 
   test.each([
     '4',
-    'afasf',
+    'afasfk',
     '135463746354',
     '4400 4164 2568 1234',
   ])('test form-control invalid', async (n) => {
