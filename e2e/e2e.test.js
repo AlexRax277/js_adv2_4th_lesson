@@ -10,7 +10,6 @@ describe('Credit Card Validator form', () => {
   const baseUrl = 'http://localhost:8888';
 
   beforeAll(async () => {
-    jest.setTimeout(30000);
     server = fork(`${__dirname}/e2e.server.js`);
     await new Promise((resolve, reject) => {
       server.on('error', reject);

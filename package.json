@@ -6,7 +6,7 @@
     "start": "webpack-dev-server --mode development",
     "lint": "eslint .",
     "build": "webpack --config webpack.prod.js",
-    "e2e": "jest --testPathPattern=./e2e/ --runInBand --detectOpenHandles --forceExit"
+    "e2e": "jest --testPathPattern=./e2e/ --runInBand --detectOpenHandles"
   },
   "repository": "https://github.com/AlexRax277/js_adv2_4th_lesson.git",
   "author": "AlexRax277",
