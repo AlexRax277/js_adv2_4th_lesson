@@ -1,8 +1,6 @@
 import puppetteer from 'puppeteer';
 import { fork } from 'child_process';
 
-const path = require('path');
-
 jest.setTimeout(30000); // default puppeteer timeout
 
 describe('Credit Card Validator form', () => {
@@ -12,7 +10,7 @@ describe('Credit Card Validator form', () => {
   const baseUrl = 'http://localhost:8888';
 
   beforeAll(async () => {
-    server = fork(`${path.resolve(__dirname)}/e2e.server.js`);
+    server = fork(`${__dirname}/e2e.server.js`);
     await new Promise((resolve, reject) => {
       server.on('error', reject);
       server.on('message', (message) => {
@@ -22,17 +20,17 @@ describe('Credit Card Validator form', () => {
       });
     });
 
-    browser = await puppetteer.launch({
-      // headless: false, // show gui
-      // slowMo: 50,
-      // devtools: true, // show devTools
-    });
-    page = await browser.newPage();
+    // browser = await puppetteer.launch({
+    //   headless: false, // show gui
+    //   slowMo: 50,
+    //   devtools: true, // show devTools
+    // });
+    // page = await browser.newPage();
   });
 
   afterAll(async () => {
     server.kill();
-    await browser.close();
+    // await browser.close();
   });
 
   test.each([
