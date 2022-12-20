@@ -20,17 +20,17 @@ describe('Credit Card Validator form', () => {
       });
     });
 
-    // browser = await puppetteer.launch({
-    //   headless: false, // show gui
-    //   slowMo: 50,
-    //   devtools: true, // show devTools
-    // });
-    // page = await browser.newPage();
+    browser = await puppetteer.launch({
+      // headless: false, // show gui
+      // slowMo: 50,
+      // devtools: true, // show devTools
+    });
+    page = await browser.newPage();
   });
 
   afterAll(async () => {
     server.kill();
-    // await browser.close();
+    await browser.close();
   });
 
   test.each([
