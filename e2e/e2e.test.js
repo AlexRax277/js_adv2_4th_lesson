@@ -23,7 +23,7 @@ describe('Credit Card Validator form', () => {
     });
 
     browser = await puppetteer.launch({
-      headless: false, // show gui
+      // headless: false, // show gui
       slowMo: 50,
       devtools: true, // show devTools
     });
@@ -31,8 +31,8 @@ describe('Credit Card Validator form', () => {
   });
 
   afterAll(async () => {
-    await browser.close();
     server.kill();
+    await browser.close();
   });
 
   test.each([
